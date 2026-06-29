@@ -1,91 +1,64 @@
-const { Redis } = require('ioredis');
 const config = require('../config');
 
-let redis = null;
-
-function getRedisClient() {
-  if (!redis) {
-    redis = new Redis({
-      url: config.redis.url,
-      token: config.redis.token
-    });
-  }
-  return redis;
+async function redisRequest(command, args) {
+    try {
+        const url = config.redis.url + '/' + command + '/' + args.join('/');
+        const response = await fetch(url, {
+            headers: { Authorization: 'Bearer ' + config.redis.token }
+        });
+        const data = await response.json();
+        return data.result;
+    } catch (error) {
+        console.error('Erreur Redis:', error.message);
+        return null;
+    }
 }
 
-/**
- * Recupere le contexte des dernieres conversations
- * @param {string} phoneNumber - Numero WhatsApp du client
- * @param {number} limit - Nombre de messages a recuperer (defaut: 5)
- */
-async function getContext(phoneNumber, limit = 5) {
-  try {
-    const client = getRedisClient();
-    const key = `chat:${phoneNumber}`;
-    const messages = await client.lrange(key, -limit, -1);
-
-    return messages.map(msg => JSON.parse(msg));
-  } catch (error) {
-    console.error('Erreur Redis getContext:', error);
-    return [];
-  }
+async function getContext(phoneNumber, limit) {
+    limit = limit || 5;
+    try {
+        const key = 'chat:' + phoneNumber;
+        const result = await redisRequest('lrange', [key, -limit, -1]);
+        if (!result) return [];
+        return result.map(function(msg) { return JSON.parse(msg); });
+    } catch (error) {
+        console.error('Erreur Redis getContext:', error);
+        return [];
+    }
 }
 
-/**
- * Sauvegarde un message dans le contexte
- * @param {string} phoneNumber 
- * @param {string} role - 'user' ou 'assistant'
- * @param {string} content 
- */
 async function saveMessage(phoneNumber, role, content) {
-  try {
-    const client = getRedisClient();
-    const key = `chat:${phoneNumber}`;
-    const message = JSON.stringify({ role, content, timestamp: Date.now() });
-
-    await client.rpush(key, message);
-    // Garde seulement les 10 derniers messages (marge de securite)
-    await client.ltrim(key, -10, -1);
-    // Expire apres 24h (conformite Meta fenetre 24h)
-    await client.expire(key, 86400);
-
-    console.log(`Message sauvegarde pour ${phoneNumber}`);
-  } catch (error) {
-    console.error('Erreur Redis saveMessage:', error);
-  }
+    try {
+        const key = 'chat:' + phoneNumber;
+        const message = JSON.stringify({ role: role, content: content, timestamp: Date.now() });
+        await redisRequest('rpush', [key, encodeURIComponent(message)]);
+        await redisRequest('ltrim', [key, -10, -1]);
+        await redisRequest('expire', [key, 86400]);
+        console.log('Message sauvegarde Redis pour ' + phoneNumber);
+    } catch (error) {
+        console.error('Erreur Redis saveMessage:', error);
+    }
 }
 
-/**
- * Verifie si l'utilisateur a demande STOP
- */
 async function isOptedOut(phoneNumber) {
-  try {
-    const client = getRedisClient();
-    const key = `optout:${phoneNumber}`;
-    const optedOut = await client.get(key);
-    return optedOut === 'true';
-  } catch (error) {
-    return false;
-  }
+    try {
+        const key = 'optout:' + phoneNumber;
+        const result = await redisRequest('get', [key]);
+        return result === 'true';
+    } catch (error) {
+        return false;
+    }
 }
 
-/**
- * Marque l'utilisateur comme desinscrit
- */
 async function setOptOut(phoneNumber) {
-  try {
-    const client = getRedisClient();
-    const key = `optout:${phoneNumber}`;
-    await client.set(key, 'true', 'EX', 2592000); // 30 jours
-    console.log(`Opt-out enregistre pour ${phoneNumber}`);
-  } catch (error) {
-    console.error('Erreur opt-out:', error);
-  }
+    try {
+        const key = 'optout:' + phoneNumber;
+        await redisRequest('set', [key, 'true']);
+        await redisRequest('expire', [key, 2592000]);
+        console.log('Opt-out enregistre pour ' + phoneNumber);
+    } catch (error) {
+        console.error('Erreur opt-out:', error);
+    }
 }
 
-module.exports = {
-  getContext,
-  saveMessage,
-  isOptedOut,
-  setOptOut
-};
+module.exports = { getContext, saveMessage, isOptedOut, setOptOut };
