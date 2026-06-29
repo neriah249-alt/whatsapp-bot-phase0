@@ -1,0 +1,131 @@
+{
+  "entreprise": {
+    "nom": "IT Solutions Bénin",
+    "secteur": "Informatique / Services IT",
+    "localisation": "Cotonou, Bénin",
+    "horaires": "Lun-Ven: 8h-18h, Sam: 9h-14h",
+    "contact_humain": "+229 01 52 21 35 35"
+  },
+  "produits": [
+    {
+      "id": "p1",
+      "nom": "Ordinateur portable professionnel",
+      "categorie": "Matériel informatique",
+      "prix": "250 000 - 450 000 FCFA",
+      "description": "Laptops neufs et reconditionnés (HP, Dell, Lenovo) avec garantie 6 mois. Configurations adaptées au travail, études ou gaming.",
+      "disponible": true
+    },
+    {
+      "id": "p2",
+      "nom": "Imprimante multifonction",
+      "categorie": "Matériel informatique",
+      "prix": "75 000 - 150 000 FCFA",
+      "description": "Imprimantes jet d'encre et laser avec scanner intégré. Marques HP, Canon, Epson.",
+      "disponible": true
+    },
+    {
+      "id": "p3",
+      "nom": "Disque dur externe 1To",
+      "categorie": "Stockage",
+      "prix": "25 000 - 35 000 FCFA",
+      "description": "Disques durs externes 1To et 2To USB 3.0. Sauvegarde sécurisée de vos données.",
+      "disponible": true
+    },
+    {
+      "id": "p4",
+      "nom": "Clé USB 64Go",
+      "categorie": "Stockage",
+      "prix": "5 000 - 8 000 FCFA",
+      "description": "Clés USB 64Go et 128Go haute vitesse. Garantie 1 an.",
+      "disponible": true
+    },
+    {
+      "id": "p5",
+      "nom": "Routeur WiFi 4G",
+      "categorie": "Réseau",
+      "prix": "35 000 - 55 000 FCFA",
+      "description": "Routeurs WiFi avec slot SIM 4G. Connexion internet rapide sans fibre optique.",
+      "disponible": true
+    },
+    {
+      "id": "p6",
+      "nom": "Webcam HD",
+      "categorie": "Périphériques",
+      "prix": "15 000 - 25 000 FCFA",
+      "description": "Webcams Full HD 1080p pour visioconférence, streaming et enregistrement.",
+      "disponible": true
+    }
+  ],
+  "services": [
+    {
+      "id": "s1",
+      "nom": "Développement de site web",
+      "delai": "1-2 semaines",
+      "description": "Sites vitrines, e-commerce, applications web. Technologies: React, Node.js, WordPress. Design responsive et hébergement inclus."
+    },
+    {
+      "id": "s2",
+      "nom": "Développement d'application mobile",
+      "delai": "3-6 semaines",
+      "description": "Applications Android et iOS. Flutter, React Native. Publication sur Play Store et App Store."
+    },
+    {
+      "id": "s3",
+      "nom": "Maintenance informatique",
+      "delai": "24-48h",
+      "description": "Réparation ordinateurs, nettoyage virus, mise à jour système, sauvegarde données. Intervention à domicile ou à distance."
+    },
+    {
+      "id": "s4",
+      "nom": "Installation réseau",
+      "delai": "2-3 jours",
+      "description": "Configuration réseau WiFi, câblage Ethernet, sécurité firewall. Pour bureaux, écoles, restaurants."
+    },
+    {
+      "id": "s5",
+      "nom": "Formation informatique",
+      "delai": "Sur devis",
+      "description": "Formation bureautique (Word, Excel), programmation (Python, JavaScript), design (Photoshop, Canva). Individuel ou groupe."
+    },
+    {
+      "id": "s6",
+      "nom": "Consulting IT",
+      "delai": "Sur rendez-vous",
+      "description": "Conseil digitalisation entreprise, choix solutions logicielles, stratégie cybersécurité, audit informatique."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Quels sont vos horaires ?",
+      "reponse": "Nous sommes ouverts du lundi au vendredi de 8h à 18h, et le samedi de 9h à 14h. Support technique disponible en ligne 7j/7."
+    },
+    {
+      "question": "Faites-vous la livraison ?",
+      "reponse": "Oui, livraison gratuite à Cotonou et environs pour les commandes supérieures à 50 000 FCFA. Autres villes: frais sur devis."
+    },
+    {
+      "question": "Proposez-vous des garanties ?",
+      "reponse": "Oui, tous nos produits ont une garantie de 6 mois minimum. Les services de développement incluent 3 mois de maintenance gratuite."
+    },
+    {
+      "question": "Puis-je payer en plusieurs fois ?",
+      "reponse": "Oui, nous proposons un paiement en 2-3 tranches pour les projets de développement supérieurs à 200 000 FCFA. Acompte de 30% à la commande."
+    },
+    {
+      "question": "Faites-vous du support à distance ?",
+      "reponse": "Oui, pour la maintenance informatique nous utilisons TeamViewer ou AnyDesk. Résolution rapide sans déplacement."
+    },
+    {
+      "question": "Combien coûte un site web ?",
+      "reponse": "Un site vitrine commence à 150 000 FCFA. Un e-commerce complet démarre à 350 000 FCFA. Le prix final dépend des fonctionnalités demandées."
+    },
+    {
+      "question": "Faites-vous des applications WhatsApp ?",
+      "reponse": "Oui ! Nous développons des bots WhatsApp professionnels avec IA pour automatiser le service client, prendre des commandes ou gérer des réservations."
+    },
+    {
+      "question": "Quels langages de programmation utilisez-vous ?",
+      "reponse": "Nous utilisons principalement JavaScript/TypeScript (Node.js, React), Python (Django, Flask), Flutter pour mobile, et PHP (WordPress, Laravel)."
+    }
+  ]
+}
