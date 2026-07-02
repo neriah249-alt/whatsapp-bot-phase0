@@ -47,6 +47,15 @@ async function start() {
   try {
     await initDatabase();
 
+    app.get('/privacy', (req, res) => {
+      res.send(`
+        <h1>Politique de Confidentialité — Bot WhatsApp IA Pro</h1>
+        <p>Ce service collecte uniquement les messages WhatsApp nécessaires au traitement des demandes clients.</p>
+        <p>Les données sont stockées de façon sécurisée et ne sont pas partagées avec des tiers.</p>
+        <p>Contact : [ton email]</p>
+      `);
+    });
+
     app.listen(config.port, () => {
       console.log(`
 ============================================
