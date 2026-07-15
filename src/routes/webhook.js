@@ -49,6 +49,26 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
 
             console.log(`Message recu de ${from}: "${msgBody.substring(0, 100)}..."`);
 
+            // Message de bienvenue pour les nouveaux clients
+            const context = await getContext(from, 1);
+            if (context.length === 0) {
+                const welcomeMsg = `Bonjour ! Je suis l'assistant virtuel de l'entreprise. 🤖
+
+            Je suis disponible 24h/24 pour repondre a vos questions sur nos produits et services.
+
+            Pour arreter de recevoir des messages, envoyez STOP.
+            Pour parler a un agent humain, envoyez AGENT.
+
+            Comment puis-je vous aider aujourd'hui ?`;
+
+                try {
+                    await sendWhatsAppMessage(from, welcomeMsg);
+                } catch (err) {
+                    console.warn('Erreur envoi bienvenue:', err.message);
+                }
+                await saveMessage(from, 'assistant', welcomeMsg);
+            }
+
             // Verifier opt-out
             if (await isOptedOut(from)) {
                 console.log(`${from} est desinscrit, ignore.`);

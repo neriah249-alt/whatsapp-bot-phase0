@@ -22,8 +22,8 @@ module.exports = {
         key: process.env.SUPABASE_SERVICE_KEY
     },
     bot: {
-        maxContextMessages: parseInt(process.env.MAX_CONTEXT_MESSAGES) || 5,
-        humanTransferKeywords: process.env.HUMAN_TRANSFER_KEYWORDS ?.split(',') || [],
+        maxContextMessages: parseInt(process.env.MAX_CONTEXT_MESSAGES = 10) || 10,
+        humanTransferKeywords: process.env.HUMAN_TRANSFER_KEYWORDS ? .split(',') || [],
         fallbackMessage: process.env.FALLBACK_MESSAGE,
         systemPromptPath: process.env.SYSTEM_PROMPT_PATH
     },

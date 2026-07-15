@@ -1,0 +1,2 @@
+mkdir .vscode
+echo {"editor.formatOnSave": false} > .vscode/settings.json
