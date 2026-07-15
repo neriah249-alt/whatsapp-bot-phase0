@@ -2,6 +2,7 @@ const express = require('express');
 const webhookRoutes = require('./routes/webhook');
 const { initDatabase } = require('./services/supabase');
 const config = require('./config');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 
@@ -11,6 +12,27 @@ app.use(express.json({
         req.rawBody = buf;
     }
 }));
+
+// Rate limiting - max 20 messages par minute par numero
+const webhookLimiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute
+    max: 20,
+    keyGenerator: (req) => {
+        try {
+            // Utiliser rawBody si disponible, sinon IP
+            if (req.rawBody) {
+                const body = JSON.parse(req.rawBody.toString());
+                const message = body ?.entry ?.[0] ?.changes ?.[0] ?.value ?.messages ?.[0];
+                return message ?.from || req.ip;
+            }
+            return req.ip;
+        } catch {
+            return req.ip;
+        }
+    },
+});
+
+app.use('/webhook', webhookLimiter);
 
 // Routes
 app.use('/webhook', webhookRoutes);
