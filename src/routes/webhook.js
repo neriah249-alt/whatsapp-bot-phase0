@@ -38,14 +38,14 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
         // Repondre immediatement a Meta (timeout 20s)
         res.status(200).send('OK');
 
-        const entry = req.body.entry ?.[0];
-        const changes = entry ?.changes ?.[0];
-        const value = changes ?.value;
+        const entry = req.body.entry ? .[0];
+        const changes = entry ? .changes ? .[0];
+        const value = changes ? .value;
 
-        if (value ?.messages ?.[0]) {
+        if (value ? .messages ? .[0]) {
             const message = value.messages[0];
             const from = message.from;
-            const msgBody = message.text ?.body || '';
+            const msgBody = message.text ? .body || '';
 
             console.log(`Message recu de ${from}: "${msgBody.substring(0, 100)}..."`);
 
@@ -70,9 +70,18 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
                 lowerMsg.includes(keyword.toLowerCase())
             );
 
+
             if (needsHuman) {
                 const transferMsg = "Je vous transfere a un agent humain. Vous serez contacte sous peu.";
-                await sendWhatsAppMessage(from, transferMsg);
+
+                // Envoyer message WhatsApp (peut echouer si token expire)
+                try {
+                    await sendWhatsAppMessage(from, transferMsg);
+                } catch (err) {
+                    console.warn('WhatsApp indisponible mais transfert continue:', err.message);
+                }
+
+                // Notifier agent par email (independant de WhatsApp)
                 await notifyAgent(from, msgBody);
                 await saveMessage(from, 'user', msgBody);
                 await saveMessage(from, 'assistant', transferMsg);
