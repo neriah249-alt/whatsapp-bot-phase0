@@ -7,6 +7,7 @@ const { sendWhatsAppMessage } = require('../services/meta');
 const { saveConversation } = require('../services/supabase');
 const { buildSystemPrompt } = require('../utils/prompt');
 const config = require('../config');
+const { notifyAgent } = require('../services/email');
 
 /**
  * GET /webhook - Verification par Meta (challenge)
@@ -37,14 +38,14 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
         // Repondre immediatement a Meta (timeout 20s)
         res.status(200).send('OK');
 
-        const entry = req.body.entry ?.[0];
-        const changes = entry ?.changes ?.[0];
-        const value = changes ?.value;
+        const entry = req.body.entry ? .[0];
+        const changes = entry ? .changes ? .[0];
+        const value = changes ? .value;
 
-        if (value ?.messages ?.[0]) {
+        if (value ? .messages ? .[0]) {
             const message = value.messages[0];
             const from = message.from;
-            const msgBody = message.text ?.body || '';
+            const msgBody = message.text ? .body || '';
 
             console.log(`Message recu de ${from}: "${msgBody.substring(0, 100)}..."`);
 
@@ -72,6 +73,7 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
             if (needsHuman) {
                 const transferMsg = "Je vous transfere a un agent humain. Vous serez contacte sous peu.";
                 await sendWhatsAppMessage(from, transferMsg);
+                await notifyAgent(from, msgBody);
                 await saveMessage(from, 'user', msgBody);
                 await saveMessage(from, 'assistant', transferMsg);
                 await saveConversation({
