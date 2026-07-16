@@ -61,4 +61,31 @@ async function setOptOut(phoneNumber) {
     }
 }
 
-module.exports = { getContext, saveMessage, isOptedOut, setOptOut };
+async function getLastMessageTime(phoneNumber) {
+    try {
+        const key = 'lastmsg:' + phoneNumber;
+        const result = await redisRequest('get', [key]);
+        return result ? parseInt(result) : null;
+    } catch (error) {
+        return null;
+    }
+}
+
+async function setLastMessageTime(phoneNumber) {
+    try {
+        const key = 'lastmsg:' + phoneNumber;
+        await redisRequest('set', [key, Date.now().toString()]);
+        await redisRequest('expire', [key, 86400]);
+    } catch (error) {
+        console.error('Erreur setLastMessageTime:', error);
+    }
+}
+
+module.exports = {
+    getContext,
+    saveMessage,
+    isOptedOut,
+    setOptOut,
+    getLastMessageTime,
+    setLastMessageTime
+};

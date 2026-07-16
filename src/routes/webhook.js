@@ -8,6 +8,7 @@ const { saveConversation } = require('../services/supabase');
 const { buildSystemPrompt } = require('../utils/prompt');
 const config = require('../config');
 const { notifyAgent } = require('../services/email');
+const { getContext, saveMessage, isOptedOut, setOptOut, getLastMessageTime, setLastMessageTime } = require('../services/redis');
 
 /**
  * GET /webhook - Verification par Meta (challenge)
@@ -45,6 +46,18 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
         if (value ?.messages ?.[0]) {
             const message = value.messages[0];
             const from = message.from;
+            // Mettre a jour le timestamp du dernier message
+            await setLastMessageTime(from);
+
+            // Verifier fenetre 24h
+            const lastMsgTime = await getLastMessageTime(from);
+            const isWithin24h = lastMsgTime && (Date.now() - lastMsgTime) < 86400000;
+
+            if (!isWithin24h && lastMsgTime) {
+                console.log(`Fenetre 24h depassee pour ${from} - utiliser templates uniquement`);
+                // Pour l'instant on repond quand meme (Phase 0/1 sandbox)
+                // En production : utiliser Meta Message Templates
+            }
             const msgBody = message.text ?.body || '';
 
             console.log(`Message recu de ${from}: "${msgBody.substring(0, 100)}..."`);
