@@ -1,131 +1,217 @@
 {
-  "entreprise": {
-    "nom": "IT Solutions Bénin",
-    "secteur": "Informatique / Services IT",
-    "localisation": "Cotonou, Bénin",
-    "horaires": "Lun-Ven: 8h-18h, Sam: 9h-14h",
-    "contact_humain": "+229 01 52 21 35 35"
-  },
-  "produits": [
-    {
-      "id": "p1",
-      "nom": "Ordinateur portable professionnel",
-      "categorie": "Matériel informatique",
-      "prix": "250 000 - 450 000 FCFA",
-      "description": "Laptops neufs et reconditionnés (HP, Dell, Lenovo) avec garantie 6 mois. Configurations adaptées au travail, études ou gaming.",
-      "disponible": true
+    "entreprise": {
+        "nom": "IT Solutions Bénin",
+        "secteur": "Informatique / Services IT",
+        "localisation": "Cotonou, Bénin (Quartier Cadjehoun)",
+        "horaires": "Lun-Ven: 8h-18h, Sam: 9h-14h",
+        "contact_humain": "+229 01 52 21 35 35",
+        "email": "contact@itsolutions-benin.com",
+        "site_web": "www.itsolutions-benin.com"
     },
-    {
-      "id": "p2",
-      "nom": "Imprimante multifonction",
-      "categorie": "Matériel informatique",
-      "prix": "75 000 - 150 000 FCFA",
-      "description": "Imprimantes jet d'encre et laser avec scanner intégré. Marques HP, Canon, Epson.",
-      "disponible": true
+    "paiement": {
+        "modes": ["MTN Mobile Money", "Moov Money", "Wave", "Orange Money", "Espèces", "Virement bancaire"],
+        "paiement_echelonne": "Disponible pour projets > 200 000 FCFA (acompte 30%)"
     },
-    {
-      "id": "p3",
-      "nom": "Disque dur externe 1To",
-      "categorie": "Stockage",
-      "prix": "25 000 - 35 000 FCFA",
-      "description": "Disques durs externes 1To et 2To USB 3.0. Sauvegarde sécurisée de vos données.",
-      "disponible": true
+    "livraison": {
+        "cotonou": "Gratuite pour commandes > 50 000 FCFA, sinon 1 000 FCFA",
+        "porto_novo": "2 000 FCFA - délai 24h",
+        "parakou": "3 000 FCFA - délai 48h",
+        "autres_villes": "Sur devis"
     },
-    {
-      "id": "p4",
-      "nom": "Clé USB 64Go",
-      "categorie": "Stockage",
-      "prix": "5 000 - 8 000 FCFA",
-      "description": "Clés USB 64Go et 128Go haute vitesse. Garantie 1 an.",
-      "disponible": true
-    },
-    {
-      "id": "p5",
-      "nom": "Routeur WiFi 4G",
-      "categorie": "Réseau",
-      "prix": "35 000 - 55 000 FCFA",
-      "description": "Routeurs WiFi avec slot SIM 4G. Connexion internet rapide sans fibre optique.",
-      "disponible": true
-    },
-    {
-      "id": "p6",
-      "nom": "Webcam HD",
-      "categorie": "Périphériques",
-      "prix": "15 000 - 25 000 FCFA",
-      "description": "Webcams Full HD 1080p pour visioconférence, streaming et enregistrement.",
-      "disponible": true
-    }
-  ],
-  "services": [
-    {
-      "id": "s1",
-      "nom": "Développement de site web",
-      "delai": "1-2 semaines",
-      "description": "Sites vitrines, e-commerce, applications web. Technologies: React, Node.js, WordPress. Design responsive et hébergement inclus."
-    },
-    {
-      "id": "s2",
-      "nom": "Développement d'application mobile",
-      "delai": "3-6 semaines",
-      "description": "Applications Android et iOS. Flutter, React Native. Publication sur Play Store et App Store."
-    },
-    {
-      "id": "s3",
-      "nom": "Maintenance informatique",
-      "delai": "24-48h",
-      "description": "Réparation ordinateurs, nettoyage virus, mise à jour système, sauvegarde données. Intervention à domicile ou à distance."
-    },
-    {
-      "id": "s4",
-      "nom": "Installation réseau",
-      "delai": "2-3 jours",
-      "description": "Configuration réseau WiFi, câblage Ethernet, sécurité firewall. Pour bureaux, écoles, restaurants."
-    },
-    {
-      "id": "s5",
-      "nom": "Formation informatique",
-      "delai": "Sur devis",
-      "description": "Formation bureautique (Word, Excel), programmation (Python, JavaScript), design (Photoshop, Canva). Individuel ou groupe."
-    },
-    {
-      "id": "s6",
-      "nom": "Consulting IT",
-      "delai": "Sur rendez-vous",
-      "description": "Conseil digitalisation entreprise, choix solutions logicielles, stratégie cybersécurité, audit informatique."
-    }
-  ],
-  "faq": [
-    {
-      "question": "Quels sont vos horaires ?",
-      "reponse": "Nous sommes ouverts du lundi au vendredi de 8h à 18h, et le samedi de 9h à 14h. Support technique disponible en ligne 7j/7."
-    },
-    {
-      "question": "Faites-vous la livraison ?",
-      "reponse": "Oui, livraison gratuite à Cotonou et environs pour les commandes supérieures à 50 000 FCFA. Autres villes: frais sur devis."
-    },
-    {
-      "question": "Proposez-vous des garanties ?",
-      "reponse": "Oui, tous nos produits ont une garantie de 6 mois minimum. Les services de développement incluent 3 mois de maintenance gratuite."
-    },
-    {
-      "question": "Puis-je payer en plusieurs fois ?",
-      "reponse": "Oui, nous proposons un paiement en 2-3 tranches pour les projets de développement supérieurs à 200 000 FCFA. Acompte de 30% à la commande."
-    },
-    {
-      "question": "Faites-vous du support à distance ?",
-      "reponse": "Oui, pour la maintenance informatique nous utilisons TeamViewer ou AnyDesk. Résolution rapide sans déplacement."
-    },
-    {
-      "question": "Combien coûte un site web ?",
-      "reponse": "Un site vitrine commence à 150 000 FCFA. Un e-commerce complet démarre à 350 000 FCFA. Le prix final dépend des fonctionnalités demandées."
-    },
-    {
-      "question": "Faites-vous des applications WhatsApp ?",
-      "reponse": "Oui ! Nous développons des bots WhatsApp professionnels avec IA pour automatiser le service client, prendre des commandes ou gérer des réservations."
-    },
-    {
-      "question": "Quels langages de programmation utilisez-vous ?",
-      "reponse": "Nous utilisons principalement JavaScript/TypeScript (Node.js, React), Python (Django, Flask), Flutter pour mobile, et PHP (WordPress, Laravel)."
-    }
-  ]
+    "produits": [{
+            "id": "p1",
+            "nom": "Ordinateur portable professionnel",
+            "categorie": "Matériel informatique",
+            "prix": "250 000 - 450 000 FCFA",
+            "description": "Laptops neufs et reconditionnés (HP, Dell, Lenovo) avec garantie 6 mois. Configurations adaptées au travail, études ou gaming.",
+            "disponible": true,
+            "populaire": true
+        },
+        {
+            "id": "p2",
+            "nom": "Imprimante multifonction",
+            "categorie": "Matériel informatique",
+            "prix": "75 000 - 150 000 FCFA",
+            "description": "Imprimantes jet d'encre et laser avec scanner intégré. Marques HP, Canon, Epson.",
+            "disponible": true,
+            "populaire": false
+        },
+        {
+            "id": "p3",
+            "nom": "Disque dur externe 1To",
+            "categorie": "Stockage",
+            "prix": "25 000 - 35 000 FCFA",
+            "description": "Disques durs externes 1To et 2To USB 3.0. Sauvegarde sécurisée de vos données.",
+            "disponible": true,
+            "populaire": false
+        },
+        {
+            "id": "p4",
+            "nom": "Clé USB 64Go",
+            "categorie": "Stockage",
+            "prix": "5 000 - 8 000 FCFA",
+            "description": "Clés USB 64Go et 128Go haute vitesse. Garantie 1 an.",
+            "disponible": true,
+            "populaire": false
+        },
+        {
+            "id": "p5",
+            "nom": "Routeur WiFi 4G",
+            "categorie": "Réseau",
+            "prix": "35 000 - 55 000 FCFA",
+            "description": "Routeurs WiFi avec slot SIM 4G. Connexion internet rapide sans fibre optique.",
+            "disponible": true,
+            "populaire": true
+        },
+        {
+            "id": "p6",
+            "nom": "Webcam HD",
+            "categorie": "Périphériques",
+            "prix": "15 000 - 25 000 FCFA",
+            "description": "Webcams Full HD 1080p pour visioconférence, streaming et enregistrement.",
+            "disponible": true,
+            "populaire": false
+        },
+        {
+            "id": "p7",
+            "nom": "Onduleur / UPS",
+            "categorie": "Alimentation",
+            "prix": "45 000 - 120 000 FCFA",
+            "description": "Protection contre les coupures de courant. Autonomie 15-60 minutes. Indispensable au Bénin.",
+            "disponible": true,
+            "populaire": true
+        },
+        {
+            "id": "p8",
+            "nom": "Ecran PC 24 pouces",
+            "categorie": "Matériel informatique",
+            "prix": "80 000 - 130 000 FCFA",
+            "description": "Ecrans Full HD 24 pouces. Marques Samsung, LG, Acer. Garantie 1 an.",
+            "disponible": true,
+            "populaire": false
+        }
+    ],
+    "services": [{
+            "id": "s1",
+            "nom": "Développement de site web",
+            "prix": "150 000 - 500 000 FCFA",
+            "delai": "1-2 semaines",
+            "description": "Sites vitrines, e-commerce, applications web. Technologies: React, Node.js, WordPress. Design responsive et hébergement inclus.",
+            "populaire": true
+        },
+        {
+            "id": "s2",
+            "nom": "Développement application mobile",
+            "prix": "400 000 - 1 500 000 FCFA",
+            "delai": "3-6 semaines",
+            "description": "Applications Android et iOS. Flutter, React Native. Publication sur Play Store et App Store.",
+            "populaire": false
+        },
+        {
+            "id": "s3",
+            "nom": "Maintenance informatique",
+            "prix": "10 000 - 50 000 FCFA",
+            "delai": "24-48h",
+            "description": "Réparation ordinateurs, nettoyage virus, mise à jour système, sauvegarde données. Intervention à domicile ou à distance.",
+            "populaire": true
+        },
+        {
+            "id": "s4",
+            "nom": "Installation réseau",
+            "prix": "75 000 - 300 000 FCFA",
+            "delai": "2-3 jours",
+            "description": "Configuration réseau WiFi, câblage Ethernet, sécurité firewall. Pour bureaux, écoles, restaurants.",
+            "populaire": false
+        },
+        {
+            "id": "s5",
+            "nom": "Formation informatique",
+            "prix": "25 000 - 150 000 FCFA",
+            "delai": "1-4 semaines",
+            "description": "Formation bureautique (Word, Excel), programmation (Python, JavaScript), design (Photoshop, Canva). Individuel ou groupe.",
+            "populaire": true
+        },
+        {
+            "id": "s6",
+            "nom": "Consulting IT",
+            "prix": "50 000 - 200 000 FCFA",
+            "delai": "Sur rendez-vous",
+            "description": "Conseil digitalisation entreprise, choix solutions logicielles, stratégie cybersécurité, audit informatique.",
+            "populaire": false
+        },
+        {
+            "id": "s7",
+            "nom": "Bot WhatsApp avec IA",
+            "prix": "200 000 - 600 000 FCFA",
+            "delai": "1-3 semaines",
+            "description": "Bot WhatsApp professionnel avec intelligence artificielle. Répond aux clients 24h/24, gère les commandes, transfère vers agents humains.",
+            "populaire": true
+        },
+        {
+            "id": "s8",
+            "nom": "Hébergement web",
+            "prix": "30 000 - 120 000 FCFA / an",
+            "delai": "Immédiat",
+            "description": "Hébergement sécurisé avec SSL, sauvegarde automatique, support technique. Uptime garanti 99.9%.",
+            "populaire": false
+        }
+    ],
+    "promotions": [{
+            "titre": "Pack Startup Digital",
+            "contenu": "Site web + Bot WhatsApp + 1 an hébergement",
+            "prix_normal": "500 000 FCFA",
+            "prix_promo": "380 000 FCFA",
+            "economie": "120 000 FCFA",
+            "valable_jusqu": "Fin du mois"
+        },
+        {
+            "titre": "Formation + Ordinateur",
+            "contenu": "Laptop reconditionné + 1 mois de formation bureautique",
+            "prix_normal": "320 000 FCFA",
+            "prix_promo": "270 000 FCFA",
+            "economie": "50 000 FCFA",
+            "valable_jusqu": "Stocks limités"
+        }
+    ],
+    "faq": [{
+            "question": "Quels sont vos horaires ?",
+            "reponse": "Nous sommes ouverts du lundi au vendredi de 8h à 18h, et le samedi de 9h à 14h. Support technique disponible en ligne 7j/7."
+        },
+        {
+            "question": "Comment payer ?",
+            "reponse": "Nous acceptons MTN Mobile Money, Moov Money, Wave, Orange Money, espèces et virement bancaire. Paiement en 2-3 fois disponible pour les projets > 200 000 FCFA."
+        },
+        {
+            "question": "Faites-vous la livraison ?",
+            "reponse": "Oui, livraison gratuite à Cotonou pour les commandes > 50 000 FCFA. Porto-Novo: 2 000 FCFA. Parakou: 3 000 FCFA."
+        },
+        {
+            "question": "Proposez-vous des garanties ?",
+            "reponse": "Oui, tous nos produits ont une garantie de 6 mois minimum. Les services de développement incluent 3 mois de maintenance gratuite."
+        },
+        {
+            "question": "Faites-vous du support à distance ?",
+            "reponse": "Oui, pour la maintenance informatique nous utilisons TeamViewer ou AnyDesk. Résolution rapide sans déplacement."
+        },
+        {
+            "question": "Combien coûte un site web ?",
+            "reponse": "Un site vitrine commence à 150 000 FCFA. Un e-commerce complet démarre à 350 000 FCFA. Contactez-nous pour un devis personnalisé."
+        },
+        {
+            "question": "Faites-vous des bots WhatsApp ?",
+            "reponse": "Oui ! Nous développons des bots WhatsApp professionnels avec IA à partir de 200 000 FCFA. Répond aux clients 24h/24 automatiquement."
+        },
+        {
+            "question": "Avez-vous des promotions ?",
+            "reponse": "Oui ! Pack Startup Digital (Site + Bot WhatsApp + Hébergement) à 380 000 FCFA au lieu de 500 000 FCFA. Contactez-nous pour en profiter."
+        },
+        {
+            "question": "Puis-je avoir un devis ?",
+            "reponse": "Bien sûr ! Décrivez votre projet et nous vous envoyons un devis détaillé sous 24h. Vous pouvez aussi appeler le +229 01 52 21 35 35."
+        },
+        {
+            "question": "Intervenez-vous à domicile ?",
+            "reponse": "Oui, nous intervenons à domicile et en entreprise à Cotonou et environs. Frais de déplacement : 2 000 - 5 000 FCFA selon la distance."
+        }
+    ]
 }
