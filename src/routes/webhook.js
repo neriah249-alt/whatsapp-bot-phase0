@@ -38,11 +38,11 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
         // Repondre immediatement a Meta (timeout 20s)
         res.status(200).send('OK');
 
-        const entry = req.body.entry ? .[0];
-        const changes = entry ? .changes ? .[0];
-        const value = changes ? .value;
+        const entry = req.body.entry ?.[0];
+        const changes = entry ?.changes ?.[0];
+        const value = changes ?.value;
 
-        if (value ? .messages ? .[0]) {
+        if (value ?.messages ?.[0]) {
             const message = value.messages[0];
             const from = message.from;
             // Mettre a jour le timestamp du dernier message
@@ -57,7 +57,7 @@ router.post('/', verifyWebhookSignature, async(req, res) => {
                 // Pour l'instant on repond quand meme (Phase 0/1 sandbox)
                 // En production : utiliser Meta Message Templates
             }
-            const msgBody = message.text ? .body || '';
+            const msgBody = message.text ?.body || '';
 
             console.log(`Message recu de ${from}: "${msgBody.substring(0, 100)}..."`);
 
